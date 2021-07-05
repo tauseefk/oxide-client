@@ -90,7 +90,7 @@ export const AuthView = ({ navigation }: { navigation: AuthScreenNavigationProp;
           <Button disabled={!username || !password} title="Sign-up" onPress={onSignupButtonTap} />
         </View>
       </SafeAreaWrapper>
-      {loading && <Loader />}
+      {/* {loading && <Loader />} */}
     </View>
   )
 }

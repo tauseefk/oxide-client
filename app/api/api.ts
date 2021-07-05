@@ -15,6 +15,7 @@ import {
 } from '../_proto/chat_pb'
 import { ChatService } from '../_proto/chat_pb_service'
 import Hashes from 'jshashes'
+import { Alert } from 'react-native'
 
 export interface IMessage {
   key: any
@@ -35,8 +36,6 @@ export interface IChat {
 }
 
 const getHost = () => 'http://127.0.0.1:10000'
-
-export const getAPIEndpoint = () => `${getHost()}/api/v0`
 
 export const fetchChats = (username: string, callback: (chats: IChat) => void) => {
   const fetchChatsRequest = new FetchChatsForUserRequest()
@@ -174,6 +173,7 @@ export const loginUser = async (
     client.start()
     client.send(loginUserRequest)
   } catch (e) {
+    callback(false)
     console.error(e)
   }
 }
@@ -204,6 +204,7 @@ export const signupUser = async (
     client.start()
     client.send(signupUserRequest)
   } catch (e) {
+    callback(false)
     console.error(e)
   }
 }
